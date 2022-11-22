@@ -29,3 +29,5 @@ Route::get('/search_topic', '\App\Http\Controllers\MessageController@search_topi
 Route::post('/search_writer_result', '\App\Http\Controllers\MessageController@search_writer_result')->name("message.search_writer_result");
 
 Route::post('/search_topic_result', '\App\Http\Controllers\MessageController@search_topic_result')->name("message.search_topic_result");
+
+Route::get('/delete_confirm/{message}', '\App\Http\Controllers\MessageController@delete_confirm')->name("message.delete_confirm");

@@ -8,15 +8,12 @@
     <div class="col-2">
         <div class="row">
             <div class="col">
-                <form action="{{route("message.destroy", $message)}}" method="POST">
-                    {{csrf_field()}}
-                    {{method_field("DELETE")}}
-                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                </form>
+                <a href="{{route("message.delete_confirm", $message)}}" class="btn btn-sm btn-danger">Delete</a>
             </div>
             <div class="col">
                 <a href="{{route("message.edit", $message)}}" class="btn btn-sm btn-warning">Edit</a>
             </div>
+
         </div>
     </div>
 </div>

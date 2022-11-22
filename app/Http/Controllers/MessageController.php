@@ -13,9 +13,6 @@ class MessageController extends Controller
         // $messages = Message::query()->get();
         $messages_query = Message::query()->orderBy("updated_at","DESC")->orderBy("created_at","DESC")->get();
         
-
-       
-
         if ($request->has("type")) {
             switch ($request->get("type")) {
                 case "all":
@@ -28,7 +25,7 @@ class MessageController extends Controller
                     $messages = $messages_query->where("message_topic", "laramerce");
                     break;
                 default:
-                $messages = $messages_query;
+                    $messages = $messages_query;
                     break;
             }
         } else {
@@ -70,7 +67,8 @@ class MessageController extends Controller
     public function destroy(Request $request, Message $message)
     {
         $message->delete();
-        return redirect()->back();
+        return redirect()->route("message.index");
+        
     }
 
     public function search_writer(Request $request, Message $message)
@@ -95,6 +93,11 @@ class MessageController extends Controller
         $favourite_topic=$request->message_topic;
         $messages = Message::query()->where("message_topic", $favourite_topic)->get();
         return view("message.index",compact("messages"));
+    }
+
+    public function delete_confirm(Request $request, Message $message)
+    {
+        return view("message.delete_confirm", compact("message"));
     }
 
 }
